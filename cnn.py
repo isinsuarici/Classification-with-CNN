@@ -124,26 +124,5 @@ plt.legend()
 plt.show()
 
 
-predicted_classes = fashion_model.predict(test_X)
-predicted_classes = np.argmax(np.round(predicted_classes),axis=1)
-correct = np.where(predicted_classes==test_Y)[0]
-# ????????
-for i, correct in enumerate(correct[:9]):
-    plt.subplot(3,3,i+1)
-    plt.imshow(test_X[correct].reshape(28,28), cmap='gray', interpolation='none')
-    plt.title("Predicted {}, Class {}".format(predicted_classes[correct], test_Y[correct]))
-    plt.tight_layout()
-    
-incorrect = np.where(predicted_classes!=test_Y)[0]
-# ????
-for i, incorrect in enumerate(incorrect[:9]):
-    plt.subplot(3,3,i+1)
-    plt.imshow(test_X[incorrect].reshape(28,28), cmap='gray', interpolation='none')
-    plt.title("Predicted {}, Class {}".format(predicted_classes[incorrect], test_Y[incorrect]))
-    plt.tight_layout()    
-
-from sklearn.metrics import classification_report
-target_names = ["Class {}".format(i) for i in range(num_classes)]
-print(classification_report(test_Y, predicted_classes, target_names=target_names))
 
 
